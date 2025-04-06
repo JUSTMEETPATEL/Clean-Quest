@@ -1,8 +1,3 @@
-Absolutely, Meet! Here's a comprehensive **README.md** for your project **CleanQuest** — it's formatted for GitHub, includes everything from project overview to setup, workflow, tech stack, folder structure, and even contribution guidelines.
-
----
-
-```markdown
 # 🧼 CleanQuest
 
 > **Crowdsourcing a Cleaner Tomorrow**
@@ -165,17 +160,9 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 💡 Author
 
-Made with ❤️ by [Meet Patel](https://github.com/meetpateldev)
+Made with ❤️ by [Meet Patel](https://github.com/JUSTMEETPATEL)
 
 > “Together, we can turn waste into opportunity.”
 
-```
 
 ---
-
-Let me know if you want me to:
-- Generate a Figma-style visual flow
-- Help build a Supabase schema for NGOs & Tasks
-- Write a full API routes doc (REST or RPC style)
-
-I’m here to help build this into something massive 🚀
