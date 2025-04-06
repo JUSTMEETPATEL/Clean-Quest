@@ -1,105 +1,181 @@
-<a href="https://demo-nextjs-with-supabase.vercel.app/">
-  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
-  <h1 align="center">Next.js and Supabase Starter Kit</h1>
-</a>
+Absolutely, Meet! Here's a comprehensive **README.md** for your project **CleanQuest** — it's formatted for GitHub, includes everything from project overview to setup, workflow, tech stack, folder structure, and even contribution guidelines.
 
-<p align="center">
- The fastest way to build apps with Next.js and Supabase
-</p>
+---
 
-<p align="center">
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#demo"><strong>Demo</strong></a> ·
-  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
-  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
-  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
-  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
-</p>
-<br/>
+```markdown
+# 🧼 CleanQuest
 
-## Features
+> **Crowdsourcing a Cleaner Tomorrow**
+>
+> A platform that empowers citizens to report waste sites, enables NGOs to take action, and leverages AI to verify impact. CleanQuest gamifies cleanup efforts, ranks NGOs on a public leaderboard, and lets funders support verified impact.
 
-- Works across the entire [Next.js](https://nextjs.org) stack
-  - App Router
-  - Pages Router
-  - Middleware
-  - Client
-  - Server
-  - It just works!
-- supabase-ssr. A package to configure Supabase Auth to use cookies
-- Styling with [Tailwind CSS](https://tailwindcss.com)
-- Components with [shadcn/ui](https://ui.shadcn.com/)
-- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
-  - Environment variables automatically assigned to Vercel project
+---
 
-## Demo
+## 🌍 Project Overview
 
-You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
+CleanQuest bridges the gap between community waste reporting and real-world cleanup efforts. Here's how it works:
 
-## Deploy to Vercel
+1. **Citizens Upload Waste Images** 📸  
+2. **NGOs Accept and Clean the Site** 🧹  
+3. **AI Compares Before/After Photos** 🤖  
+4. **NGOs Earn Points Based on Cleanup Quality** 🏆  
+5. **Funders Support Verified NGOs** 💰  
 
-Vercel deployment will guide you through creating a Supabase account and project.
+---
 
-After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
+## 🧩 Tech Stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
+| Area              | Tech Used                        |
+|-------------------|----------------------------------|
+| Frontend          | Next.js 14 (App Router), TypeScript, Tailwind CSS |
+| Backend           | Supabase (Postgres, Auth, Storage) |
+| AI Cleanup Engine | Gemini Vision API (Image Diff)   |
+| Hosting           | Vercel / Railway                 |
+| CI/CD             | GitHub Actions                   |
+| Payments (Future) | Razorpay / Stripe                |
 
-The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
+---
 
-If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
+## 🚀 Live Demo (Coming Soon)
 
-## Clone and run locally
+- [Frontend](https://cleanquest.vercel.app)
+- [Admin Panel](https://cleanquest.vercel.app/dashboard/admin)
 
-1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
+---
 
-2. Create a Next.js app using the Supabase Starter template npx command
+## 📦 Folder Structure
 
-   ```bash
-   npx create-next-app --example with-supabase with-supabase-app
-   ```
+```bash
+/cleanquest
+├── app
+│   ├── layout.tsx                  # Global layout
+│   ├── page.tsx                    # Landing page
+│   ├── report/page.tsx             # Waste upload page
+│   ├── dashboard/ngo/page.tsx      # NGO dashboard
+│   ├── dashboard/admin/page.tsx    # Admin dashboard
+│   ├── leaderboard/page.tsx        # Leaderboard
+│   └── ngo/[id]/page.tsx           # NGO profile
+├── components
+│   ├── Hero.tsx
+│   ├── ImageUploader.tsx
+│   ├── TaskCard.tsx
+│   ├── LeaderboardTable.tsx
+│   ├── BeforeAfterSlider.tsx
+│   ├── LocationPicker.tsx
+│   └── ShareBadgeModal.tsx
+├── lib
+│   ├── supabaseClient.ts
+│   └── ai.ts
+├── styles
+│   └── globals.css
+├── public
+│   └── logo.svg
+├── tailwind.config.ts
+├── tsconfig.json
+└── package.json
+```
 
-   ```bash
-   yarn create next-app --example with-supabase with-supabase-app
-   ```
+---
 
-   ```bash
-   pnpm create next-app --example with-supabase with-supabase-app
-   ```
+## 🛠️ Setup Instructions
 
-3. Use `cd` to change into the app's directory
+### 1. Clone the Repository
 
-   ```bash
-   cd with-supabase-app
-   ```
+```bash
+git clone https://github.com/your-username/cleanquest.git
+cd cleanquest
+```
 
-4. Rename `.env.example` to `.env.local` and update the following:
+### 2. Install Dependencies
 
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
-   ```
+```bash
+bun install
+# or
+npm install
+```
 
-   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
+### 3. Environment Setup
 
-5. You can now run the Next.js local development server:
+Create a `.env.local` file:
 
-   ```bash
-   npm run dev
-   ```
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+GEMINI_API_KEY=your-gemini-api-key
+```
 
-   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
+### 4. Start the Development Server
 
-6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
+```bash
+bun dev
+# or
+npm run dev
+```
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
+Visit `http://localhost:3000`
 
-## Feedback and issues
+---
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+## 🧠 Workflow Overview
 
-## More Supabase examples
+```mermaid
+graph TD
+A[User Uploads Waste Image] --> B[NGO Accepts Task]
+B --> C[NGO Cleans the Area]
+C --> D[Uploads After Image]
+D --> E[AI Compares Before/After]
+E --> F[Points Awarded Based on % Cleaned]
+F --> G[NGO Ranks on Leaderboard]
+G --> H[Funders View Verified NGOs]
+```
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
-# Clean-Quest
+---
+
+## 📈 Features Roadmap
+
+- ✅ Image Upload + Location
+- ✅ NGO Dashboard & Task Management
+- ✅ AI Cleanup Detection (Gemini)
+- ✅ Leaderboard & NGO Profiles
+- ⏳ Donation Gateway Integration (Razorpay)
+- ⏳ User Notification System
+- ⏳ Admin Analytics Dashboard
+
+---
+
+## 🤝 Contributing
+
+Want to help?
+
+```bash
+git checkout -b feature/my-feature
+git commit -m "Add my feature"
+git push origin feature/my-feature
+```
+
+Then open a pull request. All contributions welcome!
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 💡 Author
+
+Made with ❤️ by [Meet Patel](https://github.com/meetpateldev)
+
+> “Together, we can turn waste into opportunity.”
+
+```
+
+---
+
+Let me know if you want me to:
+- Generate a Figma-style visual flow
+- Help build a Supabase schema for NGOs & Tasks
+- Write a full API routes doc (REST or RPC style)
+
+I’m here to help build this into something massive 🚀
