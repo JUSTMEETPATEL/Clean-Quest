@@ -71,6 +71,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSlider
           alt="Before cleanup"
           fill
           className="object-cover"
+          style={{ width: `${100 / (sliderPosition / 100)}%` }}
         />
       </div>
 

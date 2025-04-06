@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import Link from "next/link";
 import "./globals.css";
 import { Metadata } from "next";
+import Footer from "@/components/footer";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -24,6 +25,7 @@ const defaultUrl = process.env.VERCEL_URL
   })
   
   export const metadata: Metadata = {
+    metadataBase: new URL(defaultUrl),
     title: "CleanQuest - Turn Waste into Impact",
     description: "Upload waste site photos. Let NGOs clean. Track real-time results powered by AI.",
   }
@@ -54,11 +56,8 @@ export default function RootLayout({
               </nav>
               <div>
                 {children}
-              </div>
-
-              <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-                <ThemeSwitcher />
-              </footer>
+              </div> 
+              <Footer />
             </div>
           </main>
         </ThemeProvider>
