@@ -2,10 +2,9 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import LeaderboardTable from "@/components/LeaderboardTable"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
+import { LeaderboardTable } from "@/components/leaderboard-table"
 
 export default function LeaderboardPage() {
   const [timeframe, setTimeframe] = useState("monthly")
@@ -38,7 +37,6 @@ export default function LeaderboardPage() {
               <h1 className="font-poppins text-2xl font-bold text-foreground md:text-3xl">NGO Leaderboard</h1>
             </div>
             <div className="flex items-center gap-4">
-              <ThemeToggle />
               <Select value={timeframe} onValueChange={setTimeframe}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Select timeframe" />
@@ -52,7 +50,7 @@ export default function LeaderboardPage() {
           </div>
 
           <div className="rounded-2xl bg-card p-6 shadow-lg md:p-8">
-            <LeaderboardTable timeframe={timeframe} />
+            <LeaderboardTable timeframe={timeframe as "monthly" | "allTime"} />
           </div>
 
           <div className="mt-8 rounded-2xl bg-primary/10 p-6 shadow-lg dark:bg-primary/5">

@@ -2,7 +2,10 @@ import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
 
 export const updateSession = async (request: NextRequest) => {
+  // This `try/catch` block is only here for the interactive tutorial.
+  // Feel free to remove once you have Supabase connected.
   try {
+    // Create an unmodified response
     let response = NextResponse.next({
       request: {
         headers: request.headers,
@@ -32,55 +35,28 @@ export const updateSession = async (request: NextRequest) => {
       },
     );
 
-    const {
-      data: { user },
-      error,
-    } = await supabase.auth.getUser();
+    // This will refresh session if expired - required for Server Components
+    // https://supabase.com/docs/guides/auth/server-side/nextjs
+    const user = await supabase.auth.getUser();
 
-    const { data: profile } = await supabase
-      .from("profiles")
-      .select("role")
-      .eq("id", user?.id)
-      .single();
-
-    const path = request.nextUrl.pathname;
-
-    // If user is not authenticated and trying to access protected route
-    if (path.startsWith("/dashboard") && (!user || error)) {
+    // protected routes
+    if (request.nextUrl.pathname.startsWith("/dashboard") && user.error) {
       return NextResponse.redirect(new URL("/sign-in", request.url));
     }
 
-    // Role-based restrictions
-    if (path.startsWith("/dashboard/citizen") && profile?.role !== "citizen") {
-      return NextResponse.redirect(new URL(`/dashboard/${profile?.role}`, request.url));
-    }
-
-    if (path.startsWith("/dashboard/ngo") && profile?.role !== "ngo") {
-      return NextResponse.redirect(new URL(`/dashboard/${profile?.role}`, request.url));
-    }
-
-    if (path.startsWith("/dashboard/funder") && profile?.role !== "funder") {
-      return NextResponse.redirect(new URL(`/dashboard/${profile?.role}`, request.url));
-    }
-
-    if (path === "/" && user && profile?.role) {
-      return NextResponse.redirect(new URL(`/dashboard/${profile.role}`, request.url));
+    if (request.nextUrl.pathname === "/" && !user.error) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
     }
 
     return response;
   } catch (e) {
-    console.error("Middleware error:", e);
+    // If you are here, a Supabase client could not be created!
+    // This is likely because you have not set up environment variables.
+    // Check out http://localhost:3000 for Next Steps.
     return NextResponse.next({
       request: {
         headers: request.headers,
       },
     });
   }
-};
-
-export const config = {
-  matcher: [
-    "/",
-    "/dashboard/:path*",
-  ],
 };
